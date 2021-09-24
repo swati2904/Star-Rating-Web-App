@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rating Web App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+  </head>
+
+  <body>
+    <!-- Generating the stars -->
+    <div id="star"></div>
+
+    <!-- display the count of star-->
+    <div id="display-star"></div>
+
+    <!-- <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i> -->
+
+    <script src="index.js"></script>
+    <script>
+      function getStar(value) {
+        document.getElementById("display-star").innerHTML = value;
+      }
+
+      // creating the instance of Star function, in simple language 'new' is basically a child
+      new Star("#star", 5, getStar);
+    </script>
+  </body>
+</html>
