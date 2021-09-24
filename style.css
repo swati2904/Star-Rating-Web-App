@@ -1,9 +1,26 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.fa {
+  font-size: 8rem;
+}
+
 .fa-star-o:before {
   content: "\f006";
-  color: #5f6368;
+  color: #54585c;
 }
 
 .fa-star:before {
   content: "\f005";
-  color: #d56e0c;
+  color: #0e31a7;
+}
+
+#display-star {
+  color: #df9527;
+  font-size: 4rem;
 }

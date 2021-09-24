@@ -1,12 +1,13 @@
 // constructr function
 function Star(el, count, callback) {
   // local variables are not accessible in the prototype that's why we are using this keyword .
-  this.el = el;
+  this.el = document.querySelector(el);
   this.count = count;
   this.callback = callback;
   this.active = -1;
 
   this.init();
+  this.bindEvents();
 }
 
 // prototype.init, it will not generate the instance of star every type .
@@ -23,5 +24,37 @@ Star.prototype.init = function () {
 
     div.appendChild(starElement);
   }
-  document.querySelector(this.el).appendChild(div);
+  this.el.appendChild(div);
+};
+
+Star.prototype.fill = function (activeValue) {
+  for (var i = 1; i <= this.count; i++) {
+    if (i <= activeValue) {
+      document
+        .querySelector("i[data-rating-value='" + i + "']")
+        .classList.add("fa-star");
+    } else {
+      document
+        .querySelector("i[data-rating-value='" + i + "']")
+        .classList.remove("fa-star");
+    }
+  }
+};
+
+Star.prototype.bindEvents = function () {
+  this.el.addEventListener("mouseover", (e) => {
+    // console.log(e.target.dataset["ratingValue"]);
+    this.fill(e.target.dataset["ratingValue"]);
+  });
+
+  this.el.addEventListener("mouseout", (e) => {
+    this.fill(this.active);
+  });
+
+  this.el.addEventListener("click", (e) => {
+    this.active = e.target.dataset["ratingValue"];
+    // we have also perform the mouseover functionality so we don't need the fill funcationality again
+    // this.fill(this.active);
+    this.callback(this.active);
+  });
 };
